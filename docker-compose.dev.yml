@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  movies:
+    build:
+      context: .
+    ports:
+      - 4300:4300
+      - 9229:9229
+    environment:
+      - SERVER_PORT=4300
+      - CONNECTIONSTRING=mongodb://mongo:27017
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: npm run debug
+
+  mongo:
+    image: mongo:4.2.8
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+      - mongodb_config:/data/configdb
+volumes:
+  mongodb:
+  mongodb_config:
