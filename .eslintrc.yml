@@ -1,0 +1,7 @@
+extends:
+  - xo
+  - plugin:prettier/recommended
+plugins:
+  - prettier
+rules:
+  capitalized-comments: off
